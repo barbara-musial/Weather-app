@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 
 :root {
   --main-text-color: #16697a;
@@ -9,6 +9,38 @@
 }
 
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: "Comfortaa", sans-serif;
   margin: 0;
+}
+.curr--weather--box--border {
+  background: rgb(156, 50, 254);
+  background: linear-gradient(
+    135deg,
+    rgba(156, 50, 254, 1) 0%,
+    rgba(90, 108, 234, 1) 44%,
+    rgba(18, 171, 209, 1) 100%
+  );
+  width: 350px;
+  height: 550px;
+  padding: 8px;
+  border-radius: 25px;
+  margin: 20px auto;
+}
+.curr--weather--box {
+  width: 300px;
+  padding: 25px;
+  background-color: #e2eafc;
+  border-radius: 25px;
+  height: 500px;
+}
+
+.location {
+  text-align: center;
+  color: #5800aa;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.weather--icon {
+  width: 250px;
 }
