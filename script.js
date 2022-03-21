@@ -1,19 +1,9 @@
 "use strict";
 
-const locationBox = document.querySelector(".location--box");
-const weatherIconBox = document.querySelector(".weather--icon--box");
-const weatherDescriptionBox = document.querySelector(
-  ".weather--description--box"
+const currWeatcherBoxBorder = document.querySelector(
+  ".curr--weather--box--border"
 );
-const currTempBox = document.querySelector(".curr--temp--box");
-const feelsLikeCurrTempBox = document.querySelector(
-  ".feels--like--curr--temp--box"
-);
-const minTodaysTempBox = document.querySelector(".min--todays--temp--box");
-const maxTodaysTempBox = document.querySelector(".max--todays--temp--box");
-const todaysPressureBox = document.querySelector(".todays--pressure--box");
-const todaysHumidityBox = document.querySelector(".todays--humidity--box");
-const todaysWindBox = document.querySelector(".todays--wind--box");
+const currWeatherBox = document.querySelector(".curr--weather--box");
 
 const getData = function (coords) {
   const [lat, lon] = coords;
@@ -22,8 +12,6 @@ const getData = function (coords) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
       const location = data.name;
       const weatherIcon = data.weather[0].icon;
       const weatherDescription = data.weather[0].description;
@@ -35,29 +23,22 @@ const getData = function (coords) {
       const todaysHumidity = `${data.main.humidity}%`;
       const todaysWind = `${(Number(data.wind.speed) * 3.6).toFixed(2)} km/h`;
 
-      setDataInBox(location, locationBox);
-      displayWeatherIcon(weatherIcon);
-      setDataInBox(weatherDescription, weatherDescriptionBox);
-      setDataInBox(currTemp, currTempBox);
-      setDataInBox(feelsLikeCurrTemp, feelsLikeCurrTempBox);
-      setDataInBox(minTodaysTemp, minTodaysTempBox);
-      setDataInBox(maxTodaysTemp, maxTodaysTempBox);
-      setDataInBox(todaysPressure, todaysPressureBox);
-      setDataInBox(todaysHumidity, todaysHumidityBox);
-      setDataInBox(todaysWind, todaysWindBox);
+      const html = `
+      <h1 class="location">${location}</h1>
+      <img src="./images/${weatherIcon}.png" class="weather--icon">
+      <h3 class="weather--description">${weatherDescription}</h3>
+      <h2>${currTemp}</h2>
+      <h3>${feelsLikeCurrTemp}</h3>
+      <div class="weather--details--box">
+        <h4>${minTodaysTemp}</h4>
+        <h4>${maxTodaysTemp}</h4>
+        <h4>${todaysPressure}</h4>
+        <h4>${todaysHumidity}</h4>
+        <h4>${todaysWind}</h4>
+      </div>
+     `;
+
+      currWeatherBox.innerHTML = html;
     });
 };
 getData([38.898444, -77.048535]);
-
-function displayWeatherIcon(icon) {
-  const weatherIcon = document.createElement("img");
-
-  weatherIcon.src = `./images/${icon}.png`;
-  weatherIcon.className = "weather--icon";
-
-  weatherIconBox.appendChild(weatherIcon);
-}
-
-function setDataInBox(data, box) {
-  box.textContent = data;
-}
