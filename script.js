@@ -4,7 +4,11 @@ const weatherIconBox = document.querySelector(".weather--icon--box");
 const weatherDescriptionBox = document.querySelector(
   ".weather--description--box"
 );
-const currentTempBox = document.querySelector(".current--temperature--box");
+const currTempBox = document.querySelector(".curr--temp--box");
+const feelsLikeCurrTempBox = document.querySelector(
+  ".feels--like--curr--temp--box"
+);
+const minTodaysTempBox = document.querySelector(".min--todays--temp--box");
 
 const getData = function (coords) {
   const [lat, lon] = coords;
@@ -17,11 +21,15 @@ const getData = function (coords) {
 
       const weatherIcon = data.weather[0].icon;
       const weatherDescription = data.weather[0].description;
-      const weatherCurrentTemp = data.main.temp;
+      const currTemp = `${Number(data.main.temp).toFixed(0)}℃`;
+      const feelsLikeCurrTemp = `${Number(data.main.feels_like).toFixed(0)}℃`;
+      const minTodaysTemp = `${Number(data.main.temp_min).toFixed(0)}℃`;
 
       displayWeatherIcon(weatherIcon);
-      setWeatherDescription(weatherDescription);
-      setCurrentTemp(weatherCurrentTemp);
+      setData(weatherDescription, weatherDescriptionBox);
+      setData(currTemp, currTempBox);
+      setData(feelsLikeCurrTemp, feelsLikeCurrTempBox);
+      setData(minTodaysTemp, minTodaysTempBox);
     });
 };
 getData([52.409538, 16.931992]);
@@ -35,10 +43,6 @@ function displayWeatherIcon(icon) {
   weatherIconBox.appendChild(weatherIcon);
 }
 
-function setWeatherDescription(description) {
-  weatherDescriptionBox.textContent = description;
-}
-
-function setCurrentTemp(temp) {
-  currentTempBox.textContent = `${Number(temp).toFixed(0)}℃`;
+function setData(data, box) {
+  box.textContent = data;
 }
