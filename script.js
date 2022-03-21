@@ -1,6 +1,9 @@
 "use strict";
 
 const weatherIconBox = document.querySelector(".weather--icon--box");
+const weatherDescriptionBox = document.querySelector(
+  ".weather--description--box"
+);
 
 const getData = function (coords) {
   const [lat, lon] = coords;
@@ -12,8 +15,10 @@ const getData = function (coords) {
       console.log(data);
 
       const weatherIcon = data.weather[0].icon;
+      const weatherDescription = data.weather[0].description;
 
       displayWeatherIcon(weatherIcon);
+      setWeatherDescription(weatherDescription);
     });
 };
 getData([52.409538, 16.931992]);
@@ -25,4 +30,8 @@ function displayWeatherIcon(icon) {
   weatherIcon.className = "weather--icon";
 
   weatherIconBox.appendChild(weatherIcon);
+}
+
+function setWeatherDescription(description) {
+  weatherDescriptionBox.textContent = description;
 }
