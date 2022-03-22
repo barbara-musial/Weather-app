@@ -2,21 +2,25 @@
 
 /* font sizes: 12px, 24px, 48px */
 
-:root {
-  --main-text-color: #16697a;
-  --second-text-color: #489fb5;
-  --third-text-color: #82c0cc;
-  --background-color: #ede7e3;
-  --additional-color: #ffa62b;
-}
-
 * {
   font-family: "Comfortaa", sans-serif;
   margin: 0;
 }
 
+body {
+  background-color: rgb(253, 246, 224);
+}
+
 .hidden {
   display: none;
+}
+
+.container {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 440px;
 }
 
 /* _________________________________________ */
@@ -24,14 +28,14 @@
 /* _________________________________________ */
 
 .img-container {
-  margin: 10px auto;
   position: relative;
   width: 250px;
-  height: 440px;
+
   overflow: hidden;
   text-align: center;
   color: #ffffff;
-  border-right: 12px double rgb(229, 229, 229);
+  border-right: 12px double rgb(252, 163, 17);
+  box-shadow: 0px 0px 36px -10px rgba(66, 68, 90, 1);
 }
 .time-img {
   position: absolute;
@@ -49,8 +53,6 @@
   letter-spacing: -1px;
 }
 .weather-icon {
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
-    brightness(102%) contrast(102%);
   margin: -15px auto 0 auto;
   display: block;
   width: 160px;
@@ -72,8 +74,97 @@
   font-size: 12px;
   font-weight: 300;
 }
+
 .feels-like-curr-temp {
   margin-top: 5px;
   font-size: 24px;
   font-weight: 500;
+}
+
+/* _________________________________________ */
+/* INFO Container */
+/* _________________________________________ */
+
+.info-container {
+  box-sizing: border-box;
+  background-color: rgb(13, 103, 120, 0.7);
+  color: #ffffff;
+  width: 600px;
+  padding: 25px;
+  box-shadow: 0px 0px 36px -10px rgba(66, 68, 90, 1);
+}
+
+.curr-day {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+.curr-time {
+  margin-top: 5px;
+  font-size: 24px;
+}
+
+.sun-time-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sun-time-icon {
+  width: 35px;
+}
+.min-max-temp-icon {
+  width: 30px;
+}
+.pressure-icon {
+  width: 30px;
+}
+/* _________________________________________ */
+/* Other */
+/* _________________________________________ */
+
+.white-icon {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
+    brightness(102%) contrast(102%);
+}
+
+.curr-day-info-tile {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 60px;
+  padding: 10px;
+  background-color: rgb(13, 103, 120);
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: end;
+}
+
+.tile-icon {
+  filter: invert(76%) sepia(18%) saturate(7410%) hue-rotate(351deg)
+    brightness(102%) contrast(98%);
+  width: 60px;
+}
+.curr-day-info-tile p {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: -1px;
+  font-weight: 300;
+}
+.curr-day-info-tile h3 {
+  font-size: 24px;
+  margin-top: 5px;
+  letter-spacing: -1px;
+  font-weight: 400;
+}
+
+.col-1 {
+  grid-column: 1 / 2;
+}
+.col-2 {
+  grid-column: 2 / 3;
+}
+
+.min-max-temp-icon {
+  margin-left: -20px;
+  margin-right: -15px;
 }
