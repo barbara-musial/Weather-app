@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 
+/* font sizes: 12px, 24px, 48px */
+
 :root {
   --main-text-color: #16697a;
   --second-text-color: #489fb5;
@@ -12,35 +14,66 @@
   font-family: "Comfortaa", sans-serif;
   margin: 0;
 }
-.curr--weather--box--border {
-  background: rgb(156, 50, 254);
-  background: linear-gradient(
-    135deg,
-    rgba(156, 50, 254, 1) 0%,
-    rgba(90, 108, 234, 1) 44%,
-    rgba(18, 171, 209, 1) 100%
-  );
-  width: 350px;
-  height: 550px;
-  padding: 8px;
-  border-radius: 25px;
-  margin: 20px auto;
-}
-.curr--weather--box {
-  width: 300px;
-  padding: 25px;
-  background-color: #e2eafc;
-  border-radius: 25px;
-  height: 500px;
+
+.hidden {
+  display: none;
 }
 
-.location {
-  text-align: center;
-  color: #5800aa;
-  font-weight: 700;
-  font-size: 24px;
-}
+/* _________________________________________ */
+/* IMG Container */
+/* _________________________________________ */
 
-.weather--icon {
+.img-container {
+  margin: 10px auto;
+  position: relative;
   width: 250px;
+  height: 440px;
+  overflow: hidden;
+  text-align: center;
+  color: #ffffff;
+  border-right: 12px double rgb(229, 229, 229);
+}
+.time-img {
+  position: absolute;
+  width: 260px;
+  filter: blur(2px);
+  right: -5px;
+  top: -5px;
+  left: -5px;
+  z-index: -1;
+}
+.location {
+  font-size: 24px;
+  margin-top: 25px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+.weather-icon {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
+    brightness(102%) contrast(102%);
+  margin: -15px auto 0 auto;
+  display: block;
+  width: 160px;
+}
+.curr-temp-container {
+  background-color: rgb(13, 103, 120, 0.2);
+  width: 150px;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 5px rgb(13, 103, 120, 0.3);
+  padding: 5px;
+}
+.curr-temp {
+  font-size: 48px;
+  font-weight: 500;
+}
+.curr-temp-container p {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 300;
+}
+.feels-like-curr-temp {
+  margin-top: 5px;
+  font-size: 24px;
+  font-weight: 500;
 }
