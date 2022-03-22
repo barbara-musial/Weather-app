@@ -11,36 +11,71 @@
   <body>
     <!-- Current weather -->
     <div class="container">
+      <!-- Container with an image -->
       <div class="img-container">
         <img src="./images/day.jpg" class="time-img" />
         <img src="./images/night.jpg" class="time-img hidden" />
         <h1 class="location">Poznań</h1>
-        <img src="./images/01d.png" class="weather-icon" />
+        <img src="./images/01d.png" class="weather-icon white-icon" />
         <div class="curr-temp-container">
           <h2 class="curr-temp">21°C</h2>
           <p>Feels like</p>
           <h3 class="feels-like-curr-temp">22°C</h3>
         </div>
       </div>
+      <!-- Container with detailed informations -->
       <div class="info-container">
         <h4 class="curr-day">Tuesday, 22 March</h4>
         <h5 class="curr-time">14:21</h5>
+        <!-- Sunrise / sunset -->
         <div class="sun-time-container">
-          <img src="./images/sunrise-icon.png" />
+          <img
+            src="./images/sunrise-icon.png"
+            class="sun-time-icon white-icon"
+          />
           <h4 class="sunrise-time">6:57</h4>
-          <img src="./images/sunset-icon.png" />
+          <img
+            src="./images/sunset-icon.png"
+            class="sun-time-icon white-icon"
+          />
           <h4 class="sunset-time">18:23</h4>
         </div>
-        <div class="temp-day-container">
-          <img src="./images/min-temp-icon.png" />
-          <h3 class="min-day-temp">15°C</h3>
-          <img src="./images/max-temp-icon.png" />
-          <h3 class="max-day-temp">21°C</h3>
-        </div>
+        <!-- Tiles -->
         <div class="details-container">
-          <div class="pressure-container">
-            <img src="./images/pressure-icon.png" />
-            <h3 class="pressure">1023 hPa</h3>
+          <!-- Min temp -->
+          <div class="curr-day-info-tile">
+            <img
+              src="./images/min-temp-icon.png"
+              class="min-max-temp-icon tile-icon col-1"
+            />
+            <div class="col-2">
+              <p>Low</p>
+              <h3 class="min-day-temp">15°C</h3>
+            </div>
+          </div>
+
+          <!-- Max temp -->
+          <div class="curr-day-info-tile">
+            <img
+              src="./images/max-temp-icon.png"
+              class="min-max-temp-icon tile-icon col-1"
+            />
+            <div class="col-2">
+              <p>High</p>
+              <h3 class="max-day-temp">21°C</h3>
+            </div>
+          </div>
+
+          <!-- Pressure -->
+          <div class="curr-day-info-tile">
+            <img
+              src="./images/pressure-icon.png"
+              class="pressure-icon tile-icon col-1"
+            />
+            <div class="col-2">
+              <p>Pressure</p>
+              <h3 class="pressure">1023 hPa</h3>
+            </div>
           </div>
         </div>
       </div>
