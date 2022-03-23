@@ -1,14 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap");
 
-/* font sizes: 12px, 24px, 48px */
+/* font sizes: 12px, 22px, 33px, 44px */
 
 * {
-  font-family: "Comfortaa", sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
-}
-
-body {
-  background-color: rgb(253, 246, 224);
 }
 
 .hidden {
@@ -16,11 +12,13 @@ body {
 }
 
 .container {
+  text-shadow: 3px -3px 3px #cfcfd6;
+  color: rgb(14, 31, 49);
+  height: 440px;
   margin: 30px auto;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  height: 440px;
+  justify-content: center;
 }
 
 /* _________________________________________ */
@@ -30,55 +28,51 @@ body {
 .img-container {
   position: relative;
   width: 250px;
-
   overflow: hidden;
-  text-align: center;
-  color: #ffffff;
-  border-right: 12px double rgb(252, 163, 17);
-  box-shadow: 0px 0px 36px -10px rgba(66, 68, 90, 1);
+  border-right: 14px double #f3c950;
+  padding: 25px;
+  box-sizing: border-box;
+
+  border-radius: 20px 0 0 20px;
+  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
 }
 .time-img {
   position: absolute;
-  width: 260px;
-  filter: blur(2px);
-  right: -5px;
-  top: -5px;
-  left: -5px;
+  width: 100%;
+  right: 0;
+  bottom: 0;
   z-index: -1;
 }
-.location {
-  font-size: 24px;
-  margin-top: 25px;
-  font-weight: 500;
-  letter-spacing: -1px;
-}
-.weather-icon {
-  margin: -15px auto 0 auto;
-  display: block;
-  width: 160px;
-}
-.curr-temp-container {
-  background-color: rgb(13, 103, 120, 0.2);
-  width: 150px;
-  margin: 0 auto;
-  border-radius: 5px;
-  box-shadow: 0 0 10px 5px rgb(13, 103, 120, 0.3);
-  padding: 5px;
-}
+
 .curr-temp {
-  font-size: 48px;
-  font-weight: 500;
+  font-size: 44px;
+  font-weight: 700;
 }
-.curr-temp-container p {
+
+.img-container p {
   text-transform: uppercase;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .feels-like-curr-temp {
   margin-top: 5px;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.weather-icon-day {
+  position: absolute;
+  top: 45px;
+  left: 25px;
+  width: 65px;
+  filter: invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg)
+    brightness(93%) contrast(94%);
+  margin-top: 10px;
+}
+
+.weather-desc {
+  font-weight: 700;
 }
 
 /* _________________________________________ */
@@ -87,11 +81,17 @@ body {
 
 .info-container {
   box-sizing: border-box;
-  background-color: rgb(13, 103, 120, 0.7);
-  color: #ffffff;
-  width: 600px;
+  background-color: RGB(230, 230, 238);
+
   padding: 25px;
-  box-shadow: 0px 0px 36px -10px rgba(66, 68, 90, 1);
+  border-radius: 0 20px 20px 0;
+  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
+}
+
+.location {
+  font-size: 33px;
+  font-weight: 500;
+  letter-spacing: -1px;
 }
 
 .curr-day {
@@ -99,72 +99,85 @@ body {
   font-weight: 500;
   letter-spacing: -0.5px;
 }
+
 .curr-time {
   margin-top: 5px;
   font-size: 24px;
 }
 
-.sun-time-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.sun-time-icon {
-  width: 35px;
-}
-.min-max-temp-icon {
-  width: 30px;
-}
-.pressure-icon {
-  width: 30px;
-}
-/* _________________________________________ */
-/* Other */
-/* _________________________________________ */
-
-.white-icon {
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
-    brightness(102%) contrast(102%);
+/* Details Tiles */
+.details-container {
+  margin-top: 25px;
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 15px;
+  border-radius: 20px;
+  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
 }
 
 .curr-day-info-tile {
   display: inline-grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: 60px;
-  padding: 10px;
-  background-color: rgb(13, 103, 120);
-  border-radius: 5px;
+  grid-template-columns: 40px auto;
+  grid-template-rows: auto;
+  padding: 5px;
   box-sizing: border-box;
-  text-align: end;
+  text-align: start;
+
+  /* Neumorphism */
+  /* border-radius: 20px;
+  background: #e6e6ee;
+  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff; */
+}
+.sun-rise-set-icon {
+  margin-top: -10px;
+  margin-left: -5px;
+  width: 50px;
+  filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
+    brightness(102%) contrast(91%);
+  align-self: center;
 }
 
 .tile-icon {
-  filter: invert(76%) sepia(18%) saturate(7410%) hue-rotate(351deg)
-    brightness(102%) contrast(98%);
-  width: 60px;
+  filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
+    brightness(102%) contrast(91%);
+  width: 30px;
+  align-self: center;
 }
-.curr-day-info-tile p {
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: -1px;
-  font-weight: 300;
-}
+
 .curr-day-info-tile h3 {
-  font-size: 24px;
+  font-size: 16px;
   margin-top: 5px;
   letter-spacing: -1px;
   font-weight: 400;
+  margin: auto 0;
 }
 
+/* _________________________________________ */
+/* Other */
+/* _________________________________________ */
+
+/* Grid Columns */
 .col-1 {
   grid-column: 1 / 2;
 }
 .col-2 {
   grid-column: 2 / 3;
 }
+.col-3 {
+  grid-column: 3 / 4;
+}
+.col-4 {
+  grid-column: 4 / 5;
+}
+/* Grid Rows */
+.row-1 {
+  grid-row: 1 / 2;
+}
+.row-2 {
+  grid-row: 2 / 3;
+}
 
-.min-max-temp-icon {
-  margin-left: -20px;
-  margin-right: -15px;
+.txt-al-end {
+  text-align: end;
 }
