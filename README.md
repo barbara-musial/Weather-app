@@ -1,10 +1,7 @@
 # Weather-app
 
-Icons by Raj Dev on freeicons.io
-https://freeicons.io/profile/714
+Icons by Anu Rocks on freeicons.io
+https://freeicons.io/profile/730
 
-Night image by Jackson Hendry on unsplash.com
-https://unsplash.com/@actionjackson801
-
-Day image by Unknown on wallpapercave.com
-https://wallpapercave.com/w/wp3736907
+Background images by negin valadkhani on dribbble.com
+https://dribbble.com/shots/9294239-day-and-night
