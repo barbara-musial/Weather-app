@@ -1,44 +1,81 @@
 "use strict";
 
-const currWeatcherBoxBorder = document.querySelector(
-  ".curr--weather--box--border"
-);
-const currWeatherBox = document.querySelector(".curr--weather--box");
+// Containers
+const timeBackgroundImg = document.querySelector(".time-img");
+const currTempCont = document.querySelector(".curr-temp");
+const feelsLikeCont = document.querySelector(".feels-like-curr-temp");
+const weatherIconCont = document.querySelector(".weather-icon");
+const weatherDescCont = document.querySelector(".weather-desc");
+const locationCont = document.querySelector(".location");
+const currDayCont = document.querySelector(".curr-day");
+const currTimeCont = document.querySelector(".curr-time");
+const sunriseTimeCont = document.querySelector(".sunrise-time");
+const sunsetTimeCont = document.querySelector(".sunset-time");
+const minTempCont = document.querySelector(".min-temp");
+const maxTempCont = document.querySelector(".max-temp");
+const windSpeedCont = document.querySelector(".wind-speed");
+const windDirectCont = document.querySelector(".wind-direction");
+const humidityCont = document.querySelector(".humidity");
+const pressureCont = document.querySelector(".pressure");
 
-const getData = function (coords) {
+const getAndShowData = function (coords) {
   const [lat, lon] = coords;
+
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2036b1729952c5742fea723833b9919b&units=metric`
   )
     .then((response) => response.json())
     .then((data) => {
-      const location = data.name;
+      const currTemp = `${Number(data.main.temp).toFixed(0)}°C`;
+      const feelsLikeCurrTemp = `${Number(data.main.feels_like).toFixed(0)}°C`;
       const weatherIcon = data.weather[0].icon;
       const weatherDescription = data.weather[0].description;
-      const currTemp = `${Number(data.main.temp).toFixed(0)}℃`;
-      const feelsLikeCurrTemp = `${Number(data.main.feels_like).toFixed(0)}℃`;
-      const minTodaysTemp = `${Number(data.main.temp_min).toFixed(0)}℃`;
-      const maxTodaysTemp = `${Number(data.main.temp_max).toFixed(0)}℃`;
-      const todaysPressure = `${data.main.pressure} hPa`;
-      const todaysHumidity = `${data.main.humidity}%`;
-      const todaysWind = `${(Number(data.wind.speed) * 3.6).toFixed(2)} km/h`;
 
-      const html = `
-      <h1 class="location">${location}</h1>
-      <img src="./images/${weatherIcon}.png" class="weather--icon">
-      <h3 class="weather--description">${weatherDescription}</h3>
-      <h2>${currTemp}</h2>
-      <h3>${feelsLikeCurrTemp}</h3>
-      <div class="weather--details--box">
-        <h4>${minTodaysTemp}</h4>
-        <h4>${maxTodaysTemp}</h4>
-        <h4>${todaysPressure}</h4>
-        <h4>${todaysHumidity}</h4>
-        <h4>${todaysWind}</h4>
-      </div>
-     `;
+      const location = data.name;
+      // const sunrise
+      // const sunset
+      const minTemp = `${Number(data.main.temp_min).toFixed(0)}°C`;
+      const maxTemp = `${Number(data.main.temp_max).toFixed(0)}°C`;
+      const windSpeed = `${(Number(data.wind.speed) * 3.6).toFixed(2)} km/h`;
+      // const windDirection
+      const humidity = `${data.main.humidity}%`;
+      const pressure = `${data.main.pressure} hPa`;
 
-      currWeatherBox.innerHTML = html;
+      // Set background time img
+      displayImg(
+        weatherIcon.charAt(weatherIcon.length - 1) === "n" ? "night" : "day",
+        timeBackgroundImg,
+        "jpg"
+      );
+
+      // Set weather Icon
+      weatherIconCont.classList.add(
+        `icon-${
+          weatherIcon.charAt(weatherIcon.length - 1) === "n" ? "night" : "day"
+        }`
+      );
+      displayImg(weatherIcon, weatherIconCont, "png");
+
+      // Set rest of data
+      displayData(currTemp, currTempCont);
+      displayData(feelsLikeCurrTemp, feelsLikeCont);
+      displayData(weatherDescription, weatherDescCont);
+      displayData(location, locationCont);
+      displayData(minTemp, minTempCont);
+      displayData(maxTemp, maxTempCont);
+      displayData(windSpeed, windSpeedCont);
+      displayData(humidity, humidityCont);
+      displayData(pressure, pressureCont);
+
+      console.log(data);
     });
 };
-getData([38.898444, -77.048535]);
+getAndShowData([38.898444, -77.048535]);
+
+function displayData(data, container) {
+  container.textContent = data;
+}
+
+function displayImg(img, container, format) {
+  container.src = `./images/${img}.${format}`;
+}
