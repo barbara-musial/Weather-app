@@ -36,7 +36,7 @@ const getAndShowData = function (coords) {
       const sunsetTime = convertTimestampToTime(data.sys.sunset + timezone);
       const minTemp = `${Number(data.main.temp_min).toFixed(0)}°C`;
       const maxTemp = `${Number(data.main.temp_max).toFixed(0)}°C`;
-      const windSpeed = `${(Number(data.wind.speed) * 3.6).toFixed(2)} km/h`;
+      const windSpeed = `${(Number(data.wind.speed) * 3.6).toFixed(0)} km/h`;
       const windDegrees = data.wind.deg;
       let windDirect;
       const humidity = `${data.main.humidity}%`;
@@ -107,9 +107,6 @@ const getAndShowData = function (coords) {
       displayData(pressure, pressureCont);
 
       displayCurrDateAndTime();
-
-      console.log(data);
-      console.log(Math.floor(new Date(new Date()).getTime() / 1000));
     });
 };
 getAndShowData([52.409538, 16.931992]);
@@ -130,19 +127,11 @@ function convertTimestampToTime(timestamp) {
   return `${hours}:${minutes <= 9 ? "0" + minutes : minutes}`;
 }
 function convertTimestampToDate(timestamp) {
-  const weekDays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
   const date = new Date(timestamp * 1000);
   const weekDay = date.toLocaleDateString("en-US", { weekday: "long" });
   const day = date.toLocaleDateString("en-US", { day: "numeric" });
   const month = date.toLocaleDateString("en-US", { month: "long" });
+
   return `${weekDay}, ${day} ${month} `;
 }
 
