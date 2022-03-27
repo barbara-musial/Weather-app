@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Weather app</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="module" src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+    <title>Weather app</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -16,24 +17,24 @@
 
       <!-- Background images -->
       <div class="img-container">
-        <img src="./images/day.jpg" class="time-img" />
+        <img class="time-img" />
 
         <!-- Current temp -->
-        <h2 class="curr-temp txt-al-end">21°C</h2>
+        <h2 class="curr-temp txt-al-end"></h2>
 
         <!-- Feels like temp -->
         <p class="txt-al-end">Feels like</p>
-        <h3 class="feels-like-curr-temp txt-al-end">22°C</h3>
-        <img src="./images/01d.png" class="weather-icon icon-day" />
+        <h3 class="feels-like-curr-temp txt-al-end"></h3>
+        <img class="weather-icon" />
         <p class="weather-desc">Sunny</p>
       </div>
 
       <!-- Container with detailed informations -->
 
       <div class="info-container">
-        <h1 class="location">Poznań</h1>
-        <h4 class="curr-day">Tuesday, 22 March</h4>
-        <h5 class="curr-time">14:21</h5>
+        <h1 class="location"></h1>
+        <h4 class="curr-day"></h4>
+        <h5 class="curr-time"></h5>
 
         <!-- Tiles -->
 
@@ -44,7 +45,7 @@
               src="./images/sunrise-icon.png"
               class="sun-rise-set-icon col-1"
             />
-            <h3 class="sunrise-time">6:57</h3>
+            <h3 class="sunrise-time"></h3>
           </div>
 
           <!-- Sunset -->
@@ -53,48 +54,46 @@
               src="./images/sunset-icon.png"
               class="sun-rise-set-icon col-1"
             />
-            <h3 class="sunset-time">18:23</h3>
+            <h3 class="sunset-time"></h3>
           </div>
 
           <!-- Min temp -->
           <div class="curr-day-info-tile row-1 col-2">
             <img src="./images/min-temp-icon.png" class="tile-icon col-1" />
-            <h3 class="min-temp">15°C</h3>
+            <h3 class="min-temp"></h3>
           </div>
 
           <!-- Max temp -->
           <div class="curr-day-info-tile row-2 col-2">
             <img src="./images/max-temp-icon.png" class="tile-icon col-1" />
-            <h3 class="max-temp">21°C</h3>
+            <h3 class="max-temp"></h3>
           </div>
 
           <!-- Wind Speed -->
           <div class="curr-day-info-tile row-1 col-3">
             <img src="./images/wind-speed.png" class="tile-icon col-1" />
-            <h3 class="wind-speed">1 km/h</h3>
+            <h3 class="wind-speed"></h3>
           </div>
 
           <!-- Wind Direction -->
           <div class="curr-day-info-tile row-2 col-3">
             <img src="./images/W.png" class="tile-icon col-1" />
-            <h3 class="wind-direction">W</h3>
+            <h3 class="wind-direction"></h3>
           </div>
 
           <!-- Humidity -->
           <div class="curr-day-info-tile row-1 col-4">
             <img src="./images/humidity.png" class="tile-icon col-1" />
-            <h3 class="humidity">3%</h3>
+            <h3 class="humidity"></h3>
           </div>
 
           <!-- Pressure -->
           <div class="curr-day-info-tile row-2 col-4">
             <img src="./images/pressure-icon.png" class="tile-icon col-1" />
-            <h3 class="pressure">1023 hPa</h3>
+            <h3 class="pressure"></h3>
           </div>
         </div>
       </div>
     </div>
-
-    <script src="./script.js"></script>
   </body>
 </html>
