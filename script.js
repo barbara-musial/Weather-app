@@ -106,7 +106,7 @@ async function displayWeatherData(coords) {
   );
   displayImg(currWeatherIcon, weatherIconCont, "png");
 
-  // Display rest of data
+  // Display current weather data
   displayData(currTemp, currTempCont);
   displayData(feelsLikeCurrTemp, feelsLikeCont);
   displayData(currWeatherDescription, weatherDescCont);
@@ -119,7 +119,23 @@ async function displayWeatherData(coords) {
   displayData(windDirect, windDirectCont);
   displayData(humidity, humidityCont);
   displayData(pressure, pressureCont);
-
   displayCurrDateAndTime(currDayCont, currTimeCont);
+
+  // Display hourly forecast data
+  weatherData.hourly.map((hourlyData) => {
+    const forecastTime = convertTimestampToTime(hourlyData.dt + timezoneOffset);
+    const forecastTemp = hourlyData.temp.toFixed(0);
+    const forecastImg = hourlyData.weather[0].icon;
+
+    const html = `
+    <div class="hourly-forecast-tile">
+      <p class="forecast-time row-1 col-1">${forecastTime}</p>
+      <img src="./images/${forecastImg}.png" class="hourly-icon icon-day row-2 col-1" />
+      <h3 class="forecast-temp row-3 col-1">${forecastTemp}°C</h3>
+    </div>
+    `;
+
+    hourlyForecastCont.innerHTML += html;
+  });
 }
-displayWeatherData([52.71051, 16.38044]);
+displayWeatherData([47.751076, -120.740135]);
