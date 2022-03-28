@@ -1,14 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap");
 
-/* font sizes: 12px, 22px, 33px, 44px */
+/* font sizes: 12px, 14px, 20px, 22px, 33px, 44px */
 
 * {
   font-family: "Inter", sans-serif;
   margin: 0;
 }
 
-.hidden {
-  display: none;
+/* Scrollbar */
+*::-webkit-scrollbar {
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #e6e6ee;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #fdfdff;
+  border-radius: 15px;
+  border: 0px solid #ffffff;
 }
 
 .container {
@@ -85,7 +96,7 @@
 
 .info-container {
   box-sizing: border-box;
-  background-color: RGB(230, 230, 238);
+  background-color: rgb(230, 230, 238);
   padding: 25px;
   border-radius: 0 20px 20px 0;
   box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
@@ -106,18 +117,20 @@
 .curr-time {
   margin-top: 5px;
   font-size: 24px;
+  font-weight: 700;
 }
 
 /* Details Tiles */
 .details-container {
+  padding: 5px;
+  box-sizing: border-box;
   margin-top: 25px;
   display: inline-grid;
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(2, auto);
-  gap: 15px;
+  gap: 5px;
   border-radius: 20px;
   box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
-  font-size: 12px;
 }
 
 .curr-day-info-tile {
@@ -150,6 +163,7 @@
   letter-spacing: -1px;
   font-weight: 400;
   margin: auto 0;
+  font-size: 14px;
 }
 
 /* _________________________________________ */
@@ -158,17 +172,68 @@
 .weather-forecast {
   border-radius: 20px;
   box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: 25px;
 }
-.weather-forecast h6 {
+.weather-forecast-sections {
+  padding: 0 5px;
+}
+.weather-forecast-sections h6 {
   display: inline;
+  font-size: 12px;
+}
+
+.disp-hourly {
+  font-weight: 700;
+  text-decoration: underline 2px #f3c950;
+}
+
+.disp-daily {
+  font-weight: 500;
 }
 /* _________________________________________ */
 /* Hourly Forecast */
 /* _________________________________________ */
+.hourly-forecast {
+  display: grid;
+  grid-template-columns: repeat(48, auto);
+  grid-template-rows: auto;
+  gap: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 370px;
+  height: 120px;
+}
+.hourly-forecast-tile {
+  display: inline-grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(3, auto);
+  padding: 5px;
+  border: 2px solid #f3c950;
+  border-radius: 20px;
+  width: 50px;
+}
+.forecast-time {
+  font-size: 12px;
+}
+.hourly-icon {
+  width: 30px;
+  margin: 0 auto;
+}
+.forecast-temp {
+  font-size: 14px;
+}
 
 /* _________________________________________ */
 /* Other */
 /* _________________________________________ */
+.hidden {
+  display: none;
+}
 
 /* Grid Columns */
 .col-1 {
@@ -189,6 +254,9 @@
 }
 .row-2 {
   grid-row: 2 / 3;
+}
+.row-3 {
+  grid-row: 3 / 4;
 }
 
 .txt-al-end {
