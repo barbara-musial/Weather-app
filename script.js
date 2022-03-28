@@ -23,19 +23,22 @@ const windSpeedCont = document.querySelector(".wind-speed");
 const windDirectCont = document.querySelector(".wind-direction");
 const humidityCont = document.querySelector(".humidity");
 const pressureCont = document.querySelector(".pressure");
+const hourlyForecastCont = document.querySelector(".hourly-forecast");
+const dailyForecastCont = document.querySelector(".daily-forecast");
 
 async function displayWeatherData(coords) {
   const [lat, lon] = coords;
-
-  const weatherData = await getData(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&units=metric&appid=2036b1729952c5742fea723833b9919b`
-  );
 
   const location = (
     await getData(
       `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=f52a5f9fe97247faaeb2a726f9ca5405`
     )
   ).features[0].properties.city;
+
+  const weatherData = await getData(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&units=metric&appid=2036b1729952c5742fea723833b9919b`
+  );
+
   const currTemp = `${weatherData.current.temp.toFixed(0)}°C`;
   const feelsLikeCurrTemp = `${weatherData.current.feels_like.toFixed(0)}°C`;
   const currWeatherIcon = weatherData.current.weather[0].icon;
