@@ -1,4 +1,7 @@
-import { convertTimestampToTime } from "./modules/convertTimestamp.js";
+import {
+  convertTimestampToTime,
+  convertTimestampToWeekDay,
+} from "./modules/convertTimestamp.js";
 import {
   displayImg,
   displayData,
@@ -125,17 +128,42 @@ async function displayWeatherData(coords) {
   weatherData.hourly.map((hourlyData) => {
     const forecastTime = convertTimestampToTime(hourlyData.dt + timezoneOffset);
     const forecastTemp = hourlyData.temp.toFixed(0);
-    const forecastImg = hourlyData.weather[0].icon;
+    const forecastIcon = hourlyData.weather[0].icon;
 
     const html = `
-    <div class="hourly-forecast-tile">
-      <p class="forecast-time row-1 col-1">${forecastTime}</p>
-      <img src="./images/${forecastImg}.png" class="hourly-icon icon-day row-2 col-1" />
-      <h3 class="forecast-temp row-3 col-1">${forecastTemp}°C</h3>
+    <div class="forecast-tile hourly-tile">
+      <p class="forecast-time-date row-1 col-1">${forecastTime}</p>
+      <img src="./images/${forecastIcon}.png" class="hourly-icon icon-day row-2 col-1" />
+      <h3 class="hourly-forecast-temp row-3 col-1">${forecastTemp}°C</h3>
     </div>
     `;
 
     hourlyForecastCont.innerHTML += html;
+  });
+
+  // Display daily forecast data
+  weatherData.daily.slice(1).map((dailyData) => {
+    const forecastWeekDay = convertTimestampToWeekDay(
+      dailyData.dt + timezoneOffset
+    );
+    const forecastIcon = dailyData.weather[0].icon;
+    const tempDay = dailyData.temp.day.toFixed(0);
+    const tempNight = dailyData.temp.night.toFixed(0);
+
+    const html = `
+    <div class="forecast-tile daily-tile">
+      <p class="forecast-time-date row-1 col-1">${forecastWeekDay}</p>
+      <img src="./images/${forecastIcon}.png" class="daily-icon" />
+      <div class="daily-forecast-temp">
+        <img src="./images/01d.png " class="row-1 col-1" />
+        <h3 class="row-1 col-2">${tempDay}°C</h3>
+        <img src="./images/01n.png" class="row-2 col-1" />
+        <h3 class="row-2 col-2">${tempNight}°C</h3>
+      </div>
+    </div>
+    `;
+
+    dailyForecastCont.innerHTML += html;
   });
 }
 displayWeatherData([47.751076, -120.740135]);
