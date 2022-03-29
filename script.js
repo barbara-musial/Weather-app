@@ -34,7 +34,8 @@ const windDirectIcon = document.querySelector(".wind-direct-icon");
 const humidityCont = document.querySelector(".humidity");
 const pressureCont = document.querySelector(".pressure");
 const forecastCont = document.querySelector(".weather-forecast");
-const forecastTiles = document.querySelectorAll(".forecast-tile");
+const displayHourlyButton = document.querySelector(".disp-hourly");
+const displayDailyButton = document.querySelector(".disp-daily");
 const hourlyForecastCont = document.querySelector(".hourly-forecast");
 const dailyForecastCont = document.querySelector(".daily-forecast");
 
@@ -140,11 +141,17 @@ async function displayWeatherData(coords) {
     const forecastTime = convertTimestampToTime(hourlyData.dt + timezoneOffset);
     const forecastTemp = hourlyData.temp.toFixed(1);
     const forecastIcon = hourlyData.weather[0].icon;
+    const iconColor =
+      currWeatherIcon.at(-1) === "d"
+        ? "forecast-icon-color-day"
+        : "forecast-icon-color-night";
+    const borderColor =
+      currWeatherIcon.at(-1) === "d" ? "tile-border-day" : "tile-border-night";
 
     const html = `
-    <div class="forecast-tile hourly-tile">
+    <div class="forecast-tile ${borderColor} hourly-tile">
       <p class="forecast-time-date row-1 col-1">${forecastTime}</p>
-      <img src="./images/${forecastIcon}.png" class="hourly-icon icon-day row-2 col-1" />
+      <img src="./images/${forecastIcon}.png" class="hourly-icon ${iconColor} icon-day row-2 col-1" />
       <h3 class="hourly-forecast-temp row-3 col-1">${forecastTemp}°C</h3>
     </div>
     `;
@@ -164,9 +171,11 @@ async function displayWeatherData(coords) {
       currWeatherIcon.at(-1) === "d"
         ? "forecast-icon-color-day"
         : "forecast-icon-color-night";
+    const borderColor =
+      currWeatherIcon.at(-1) === "d" ? "tile-border-day" : "tile-border-night";
 
     const html = `
-    <div class="forecast-tile daily-tile">
+    <div class="forecast-tile ${borderColor} daily-tile">
       <p class="forecast-time-date row-1 col-1">${forecastWeekDay}</p>
       <img src="./images/${forecastIcon}.png" class="daily-icon ${iconColor} " />
       <div class="daily-forecast-temp">
@@ -211,3 +220,19 @@ async function displayWeatherData(coords) {
   }
 }
 displayWeatherData([52.229676, 21.012229]);
+
+displayDailyButton.addEventListener("click", () => {
+  dailyForecastCont.classList.remove("hidden");
+  hourlyForecastCont.classList.add("hidden");
+
+  displayDailyButton.style.fontWeight = "700";
+  displayHourlyButton.style.fontWeight = "500";
+});
+
+displayHourlyButton.addEventListener("click", () => {
+  hourlyForecastCont.classList.remove("hidden");
+  dailyForecastCont.classList.add("hidden");
+
+  displayHourlyButton.style.fontWeight = "700";
+  displayDailyButton.style.fontWeight = "500";
+});
