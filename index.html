@@ -20,11 +20,11 @@
         <img class="time-img" />
 
         <!-- Current temp -->
-        <h2 class="curr-temp txt-al-end"></h2>
+        <h2 class="curr-temp"></h2>
 
         <!-- Feels like temp -->
-        <p class="txt-al-end">Feels like</p>
-        <h3 class="feels-like-curr-temp txt-al-end"></h3>
+        <p>Feels like</p>
+        <h3 class="feels-like-curr-temp"></h3>
         <img class="weather-icon" />
         <p class="weather-desc">Sunny</p>
       </div>
@@ -43,7 +43,7 @@
           <div class="curr-day-info-tile">
             <img
               src="./images/sunrise-icon.png"
-              class="sun-rise-set-icon col-1"
+              class="sun-rise-set-icon tile-icon tile-icon-day col-1"
             />
             <h3 class="sunrise-time"></h3>
           </div>
@@ -52,53 +52,74 @@
           <div class="curr-day-info-tile row-2 col-1">
             <img
               src="./images/sunset-icon.png"
-              class="sun-rise-set-icon col-1"
+              class="sun-rise-set-icon tile-icon tile-icon-day col-1"
             />
             <h3 class="sunset-time"></h3>
           </div>
 
           <!-- Min temp -->
           <div class="curr-day-info-tile row-1 col-2">
-            <img src="./images/min-temp-icon.png" class="tile-icon col-1" />
+            <img
+              src="./images/min-temp-icon.png"
+              class="tile-icon tile-icon-day col-1"
+            />
             <h3 class="min-temp"></h3>
           </div>
 
           <!-- Max temp -->
           <div class="curr-day-info-tile row-2 col-2">
-            <img src="./images/max-temp-icon.png" class="tile-icon col-1" />
+            <img
+              src="./images/max-temp-icon.png"
+              class="tile-icon tile-icon-day col-1"
+            />
             <h3 class="max-temp"></h3>
           </div>
 
           <!-- Wind Speed -->
           <div class="curr-day-info-tile row-1 col-3">
-            <img src="./images/wind-speed.png" class="tile-icon col-1" />
+            <img
+              src="./images/wind-speed.png"
+              class="tile-icon tile-icon-day col-1"
+            />
             <h3 class="wind-speed"></h3>
           </div>
 
           <!-- Wind Direction -->
           <div class="curr-day-info-tile row-2 col-3">
-            <img src="./images/W.png" class="tile-icon col-1" />
+            <img src="./images/W.png" class="tile-icon tile-icon-day col-1" />
             <h3 class="wind-direction"></h3>
           </div>
 
           <!-- Humidity -->
           <div class="curr-day-info-tile row-1 col-4">
-            <img src="./images/humidity.png" class="tile-icon col-1" />
+            <img
+              src="./images/humidity.png"
+              class="tile-icon tile-icon-day col-1"
+            />
             <h3 class="humidity"></h3>
           </div>
 
           <!-- Pressure -->
           <div class="curr-day-info-tile row-2 col-4">
-            <img src="./images/pressure-icon.png" class="tile-icon col-1" />
+            <img
+              src="./images/pressure-icon.png"
+              class="tile-icon tile-icon-day col-1"
+            />
             <h3 class="pressure"></h3>
           </div>
         </div>
+
+        <!-- Weather Forecast -->
         <div class="weather-forecast">
           <div class="weather-forecast-sections">
             <h6 class="disp-hourly font-weight-700">Hourly</h6>
             <h6 class="disp-daily">Daily</h6>
           </div>
+
+          <!-- Hourly Forecast -->
           <div class="hourly-forecast forecast hidden"></div>
+
+          <!-- Daily Forecast -->
           <div class="daily-forecast forecast"></div>
         </div>
       </div>
