@@ -10,22 +10,31 @@ import {
 import { getDataFromAPI as getData } from "./modules/getDataFromAPI.js";
 
 // Containers
+const widgetCont = document.querySelector(".container");
+const backgroundImgCont = document.querySelector(".img-container");
 const timeBackgroundImg = document.querySelector(".time-img");
 const currTempCont = document.querySelector(".curr-temp");
 const feelsLikeCont = document.querySelector(".feels-like-curr-temp");
 const weatherIconCont = document.querySelector(".weather-icon");
+const weatherIcon = document.querySelector(".weather-icon");
 const weatherDescCont = document.querySelector(".weather-desc");
+const infoCont = document.querySelector(".info-container");
 const locationCont = document.querySelector(".location");
 const currDayCont = document.querySelector(".curr-day");
 const currTimeCont = document.querySelector(".curr-time");
+const detailsCont = document.querySelector(".details-container");
+const tileIcons = document.querySelectorAll(".tile-icon");
 const sunriseTimeCont = document.querySelector(".sunrise-time");
 const sunsetTimeCont = document.querySelector(".sunset-time");
 const minTempCont = document.querySelector(".min-temp");
 const maxTempCont = document.querySelector(".max-temp");
 const windSpeedCont = document.querySelector(".wind-speed");
 const windDirectCont = document.querySelector(".wind-direction");
+const windDirectIcon = document.querySelector(".wind-direct-icon");
 const humidityCont = document.querySelector(".humidity");
 const pressureCont = document.querySelector(".pressure");
+const forecastCont = document.querySelector(".weather-forecast");
+const forecastTiles = document.querySelectorAll(".forecast-tile");
 const hourlyForecastCont = document.querySelector(".hourly-forecast");
 const dailyForecastCont = document.querySelector(".daily-forecast");
 
@@ -42,8 +51,8 @@ async function displayWeatherData(coords) {
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&units=metric&appid=2036b1729952c5742fea723833b9919b`
   );
 
-  const currTemp = `${weatherData.current.temp.toFixed(1)}°C`;
-  const feelsLikeCurrTemp = `${weatherData.current.feels_like.toFixed(1)}°C`;
+  const currTemp = `${weatherData.current.temp.toFixed(0)}°C`;
+  const feelsLikeCurrTemp = `${weatherData.current.feels_like.toFixed(0)}°C`;
   const currWeatherIcon = weatherData.current.weather[0].icon;
   const currWeatherDescription = weatherData.current.weather[0].description;
   const timezoneOffset = weatherData.timezone_offset;
@@ -60,6 +69,13 @@ async function displayWeatherData(coords) {
   let windDirect;
   const humidity = `${weatherData.current.humidity}%`;
   const pressure = `${weatherData.current.pressure} hPa`;
+
+  // Display background time img
+  displayImg(
+    currWeatherIcon.at(-1) === "n" ? "night" : "day",
+    timeBackgroundImg,
+    "jpg"
+  );
 
   // Set wind direction
   if (windDegrees >= 349 || windDegrees <= 11) {
@@ -96,20 +112,15 @@ async function displayWeatherData(coords) {
     windDirect = "NNW";
   }
 
-  // Display background time img
+  // Display wind direction icon
   displayImg(
-    currWeatherIcon.at(-1) === "n" ? "night" : "day",
-    timeBackgroundImg,
-    "jpg"
+    windDirect.length > 2 ? "wind-direct" : windDirect,
+    windDirectIcon,
+    "png"
   );
-
-  // Display weather Icon
-  weatherIconCont.classList.add(
-    `icon-${currWeatherIcon.at(-1) === "n" ? "night" : "day"}`
-  );
-  displayImg(currWeatherIcon, weatherIconCont, "png");
 
   // Display current weather data
+  displayImg(currWeatherIcon, weatherIconCont, "png");
   displayData(currTemp, currTempCont);
   displayData(feelsLikeCurrTemp, feelsLikeCont);
   displayData(currWeatherDescription, weatherDescCont);
@@ -122,7 +133,7 @@ async function displayWeatherData(coords) {
   displayData(windDirect, windDirectCont);
   displayData(humidity, humidityCont);
   displayData(pressure, pressureCont);
-  displayCurrDateAndTime(currDayCont, currTimeCont);
+  displayCurrDateAndTime(weatherData.current.dt, currDayCont, currTimeCont);
 
   // Display hourly forecast data
   weatherData.hourly.map((hourlyData) => {
@@ -149,15 +160,19 @@ async function displayWeatherData(coords) {
     const forecastIcon = dailyData.weather[0].icon;
     const tempDay = dailyData.temp.day.toFixed(1);
     const tempNight = dailyData.temp.night.toFixed(1);
+    const iconColor =
+      currWeatherIcon.at(-1) === "d"
+        ? "forecast-icon-color-day"
+        : "forecast-icon-color-night";
 
     const html = `
     <div class="forecast-tile daily-tile">
       <p class="forecast-time-date row-1 col-1">${forecastWeekDay}</p>
-      <img src="./images/${forecastIcon}.png" class="daily-icon" />
+      <img src="./images/${forecastIcon}.png" class="daily-icon ${iconColor} " />
       <div class="daily-forecast-temp">
-        <img src="./images/01d.png " class="row-1 col-1" />
-        <h3 class="row-1 col-2">${tempDay}°C</h3>
-        <img src="./images/01n.png" class="row-2 col-1" />
+      <img src="./images/01d.png " class="${iconColor} row-1 col-1" />
+      <h3 class="row-1 col-2">${tempDay}°C</h3>
+        <img src="./images/01n.png" class="${iconColor} row-2 col-1" />
         <h3 class="row-2 col-2">${tempNight}°C</h3>
       </div>
     </div>
@@ -165,5 +180,34 @@ async function displayWeatherData(coords) {
 
     dailyForecastCont.innerHTML += html;
   });
+
+  // Set colors if night mode
+  if (currWeatherIcon.at(-1) === "n") {
+    // container
+    widgetCont.style.color = "#e6e6ee";
+    widgetCont.style.textShadow = "3px -3px 3px #0a1522";
+    // img-container
+    backgroundImgCont.style.borderRight = "14px double #d5d5d5";
+    backgroundImgCont.style.boxShadow =
+      "6px 6px 16px #0a1521, -6px -6px 16px #122941";
+    // weather-icon
+    weatherIcon.style.filter =
+      "invert(88%) sepia(5%) saturate(1117%) hue-rotate(202deg) brightness(110%) contrast(86%)";
+    // info-container
+    infoCont.style.backgroundColor = "#0e1f31";
+    infoCont.style.boxShadow = "6px 6px 16px #0a1521, -6px -6px 16px #122941";
+    // details-container
+    detailsCont.style.boxShadow =
+      "6px 6px 16px #0a1521, -6px -6px 16px #122941";
+    // tile-icon
+    tileIcons.forEach(
+      (tileIcon) =>
+        (tileIcon.style.filter =
+          "invert(90%) sepia(0%) saturate(5%) hue-rotate(166deg) brightness(83%) contrast(97%)")
+    );
+    // weather-forecast
+    forecastCont.style.boxShadow =
+      "6px 6px 16px #0a1521, -6px -6px 16px #122941";
+  }
 }
-displayWeatherData([47.751076, -120.740135]);
+displayWeatherData([52.229676, 21.012229]);

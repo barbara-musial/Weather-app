@@ -11,8 +11,11 @@ export function displayImg(img, container, format) {
   container.src = `./images/${img}.${format}`;
 }
 
-export function displayCurrDateAndTime(dateContainer, timeContainer) {
-  const currDateTimestamp = Math.floor(new Date(new Date()).getTime() / 1000);
-  dateContainer.textContent = convertTimestampToDate(currDateTimestamp);
-  timeContainer.textContent = convertTimestampToTime(currDateTimestamp);
+export function displayCurrDateAndTime(
+  timestamp,
+  dateContainer,
+  timeContainer
+) {
+  dateContainer.textContent = convertTimestampToDate(timestamp);
+  timeContainer.textContent = convertTimestampToTime(timestamp);
 }
