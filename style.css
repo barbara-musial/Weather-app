@@ -6,30 +6,31 @@
   font-family: "Inter", sans-serif;
   margin: 0;
 }
+/* _______________________ */
 
 /* Scrollbar */
 *::-webkit-scrollbar {
   height: 10px;
 }
-
 *::-webkit-scrollbar-track {
   background: #e6e6ee;
 }
-
 *::-webkit-scrollbar-thumb {
   background-color: #fdfdff;
-  border-radius: 15px;
   border: 0px solid #ffffff;
+  border-radius: 15px;
 }
-
 .container {
-  text-shadow: 3px -3px 3px #cfcfd6;
-  color: rgb(14, 31, 49);
   height: 440px;
   margin: 30px auto;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  color: rgb(14, 31, 49);
+  letter-spacing: -0.5px;
+  text-shadow: 3px -3px 3px #cfcfd6;
 }
 
 /* _________________________________________ */
@@ -37,57 +38,60 @@
 /* _________________________________________ */
 
 .img-container {
-  position: relative;
   width: 250px;
-  overflow: hidden;
-  border-right: 14px double #f3c950;
   padding: 25px;
-  box-sizing: border-box;
-
+  border-right: 14px double #f3c950;
   border-radius: 20px 0 0 20px;
+
+  position: relative;
+
+  box-sizing: border-box;
+  overflow: hidden;
   box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
+
+  text-align: right;
 }
 .time-img {
-  position: absolute;
   width: 100%;
+
+  position: absolute;
   right: 0;
   bottom: 0;
+
   z-index: -1;
 }
-
 .curr-temp {
   font-size: 44px;
   font-weight: 700;
 }
-
 .img-container p {
-  text-transform: uppercase;
   font-size: 12px;
   font-weight: 500;
-}
 
+  text-transform: uppercase;
+}
 .feels-like-curr-temp {
   margin-top: 5px;
+
   font-size: 22px;
   font-weight: 700;
 }
-
 .weather-icon {
+  width: 65px;
+  margin-top: 10px;
+
   position: absolute;
   top: 45px;
   left: 25px;
-  width: 65px;
-
-  margin-top: 10px;
 }
-
 .icon-day {
   filter: invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg)
     brightness(93%) contrast(94%);
 }
-
 .weather-desc {
   font-weight: 700;
+
+  text-align: left;
 }
 
 /* _________________________________________ */
@@ -95,132 +99,133 @@
 /* _________________________________________ */
 
 .info-container {
-  box-sizing: border-box;
-  background-color: rgb(230, 230, 238);
   padding: 25px;
   border-radius: 0 20px 20px 0;
+
+  background-color: rgb(230, 230, 238);
+
+  box-sizing: border-box;
   box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
 }
-
 .location {
   font-size: 33px;
   font-weight: 500;
-  letter-spacing: -1px;
 }
-
 .curr-day {
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: -0.5px;
 }
-
 .curr-time {
   margin-top: 5px;
+
   font-size: 24px;
   font-weight: 700;
 }
 
+/* _______________________ */
 /* Details Tiles */
+
 .details-container {
   padding: 5px;
-  box-sizing: border-box;
-  margin-top: 25px;
-  display: inline-grid;
-  grid-template-columns: repeat(4, auto);
-  grid-template-rows: repeat(2, auto);
-  gap: 5px;
   border-radius: 20px;
+  margin-top: 25px;
+
+  display: inline-grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(4, auto);
+  gap: 5px;
+
+  box-sizing: border-box;
   box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
 }
-
 .curr-day-info-tile {
-  display: inline-grid;
-  grid-template-columns: 40px auto;
-  grid-template-rows: auto;
   padding: 5px;
+
+  display: inline-grid;
+  grid-template-rows: auto;
+  grid-template-columns: 40px auto;
+
   box-sizing: border-box;
   text-align: start;
 }
+.tile-icon-day {
+  filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
+    brightness(102%) contrast(91%);
+}
+.tile-icon {
+  width: 30px;
 
+  align-self: center;
+}
 .sun-rise-set-icon {
+  width: 50px;
   margin-top: -10px;
   margin-left: -5px;
-  width: 50px;
-  filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
-    brightness(102%) contrast(91%);
-  align-self: center;
 }
-
-.tile-icon {
-  filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
-    brightness(102%) contrast(91%);
-  width: 30px;
-  align-self: center;
-}
-
 .curr-day-info-tile h3 {
-  margin-top: 5px;
-  letter-spacing: -1px;
-  font-weight: 400;
   margin: auto 0;
+
   font-size: 14px;
+  font-weight: 400;
 }
 
 /* _________________________________________ */
 /* Weather Forecast */
 /* _________________________________________ */
+
 .weather-forecast {
-  border-radius: 20px;
-  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
   padding: 5px;
-  box-sizing: border-box;
+  border-radius: 20px;
   margin-top: 25px;
+
+  box-sizing: border-box;
+  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
 }
 .weather-forecast-sections {
   padding: 0 5px;
 }
 .weather-forecast-sections h6 {
   display: inline;
+
   font-size: 12px;
 }
-
 .disp-hourly {
   font-weight: 700;
   text-decoration: underline 2px #f3c950;
 }
-
 .disp-daily {
   font-weight: 500;
 }
-
 .forecast-tile {
-  display: inline-grid;
-  grid-template-columns: auto;
-  grid-template-rows: repeat(3, auto);
   padding: 5px;
   border: 2px solid #f3c950;
   border-radius: 20px;
-}
 
+  display: inline-grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(3, auto);
+}
 .forecast-time-date {
   font-size: 12px;
 }
-
 .forecast {
+  width: 370px;
+  height: 130px;
+  padding: 5px;
+
   display: grid;
   grid-template-rows: auto;
   gap: 5px;
-  padding: 5px;
+
   box-sizing: border-box;
-  text-align: center;
   overflow-x: scroll;
   overflow-y: hidden;
-  width: 370px;
-  height: 130px;
+  text-align: center;
 }
+
 /* _________________________________________ */
 /* Hourly Forecast */
-/* _________________________________________ */
+
 .hourly-forecast {
   grid-template-columns: repeat(48, auto);
 }
@@ -237,7 +242,6 @@
 
 /* _________________________________________ */
 /* Daily forecast */
-/* _________________________________________ */
 
 .daily-forecast {
   grid-template-columns: repeat(8, auto);
@@ -249,25 +253,26 @@
   width: 35px;
   margin: 0 auto;
 }
-
 .daily-forecast-temp {
   display: grid;
-  grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(2, 50%);
   gap: 5px 0;
 }
-
 .daily-forecast-temp img {
   width: 20px;
   margin: 0 auto;
 }
 .daily-forecast-temp h3 {
   font-size: 12px;
+
   align-self: center;
 }
+
 /* _________________________________________ */
 /* Other */
 /* _________________________________________ */
+
 .hidden {
   display: none;
 }
@@ -285,6 +290,7 @@
 .col-4 {
   grid-column: 4 / 5;
 }
+
 /* Grid Rows */
 .row-1 {
   grid-row: 1 / 2;
@@ -294,8 +300,4 @@
 }
 .row-3 {
   grid-row: 3 / 4;
-}
-
-.txt-al-end {
-  text-align: end;
 }
