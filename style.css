@@ -211,8 +211,14 @@
   font-weight: 700;
   margin-right: 5px;
 }
+.disp-hourly:hover {
+  cursor: pointer;
+}
 .disp-daily {
   font-weight: 500;
+}
+.disp-daily:hover {
+  cursor: pointer;
 }
 .forecast-tile {
   padding: 5px;
