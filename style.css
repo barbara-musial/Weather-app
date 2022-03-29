@@ -2,6 +2,20 @@
 
 /* font sizes: 12px, 14px, 20px, 22px, 33px, 44px */
 
+:root {
+  --day-background-color: #e6e6ee;
+  --day-color-shadow: #d2d2da;
+  --night-background-color: #0e1f31;
+  --night-color-shadow: #0a1522;
+  --scrollbar-color: #fdfdff;
+  --day-neuromorphism-color-1: #cfcfd6;
+  --day-neuromotphism-color-2: #fdfdff;
+  --night-neuromorphism-color-1: #0a1521;
+  --night-neuromorphism-color-2: #122941;
+  --day-additional-color: #f3c950;
+  --night-additional-color: #d5d5d5;
+}
+
 * {
   font-family: "Inter", sans-serif;
   margin: 0;
@@ -13,11 +27,11 @@
   height: 10px;
 }
 *::-webkit-scrollbar-track {
-  background: #e6e6ee;
+  background: var(--day-background-color);
 }
 *::-webkit-scrollbar-thumb {
-  background-color: #fdfdff;
-  border: 0px solid #ffffff;
+  background-color: var(--scrollbar-color);
+  border: 0px solid var(--day-background-color);
   border-radius: 15px;
 }
 .container {
@@ -28,9 +42,9 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  color: rgb(14, 31, 49);
+  color: var(--night-background-color);
   letter-spacing: -0.5px;
-  text-shadow: 3px -3px 3px #cfcfd6;
+  text-shadow: 3px -3px 3px var(--day-color-shadow);
 }
 
 /* _________________________________________ */
@@ -40,14 +54,15 @@
 .img-container {
   width: 250px;
   padding: 25px;
-  border-right: 14px double #f3c950;
+  border-right: 14px double var(--day-additional-color);
   border-radius: 20px 0 0 20px;
 
   position: relative;
 
   box-sizing: border-box;
   overflow: hidden;
-  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
+  box-shadow: 6px 6px 16px var(--day-neuromorphism-color-1),
+    -6px -6px 16px var(--day-neuromotphism-color-2);
 
   text-align: right;
 }
@@ -83,11 +98,11 @@
   position: absolute;
   top: 45px;
   left: 25px;
-}
-.icon-day {
+
   filter: invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg)
     brightness(93%) contrast(94%);
 }
+
 .weather-desc {
   font-weight: 700;
 
@@ -102,10 +117,11 @@
   padding: 25px;
   border-radius: 0 20px 20px 0;
 
-  background-color: rgb(230, 230, 238);
+  background-color: var(--day-background-color);
 
   box-sizing: border-box;
-  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
+  box-shadow: 6px 6px 16px var(--day-neuromorphism-color-1),
+    -6px -6px 16px var(--day-neuromotphism-color-2);
 }
 .location {
   font-size: 33px;
@@ -136,7 +152,8 @@
   gap: 5px;
 
   box-sizing: border-box;
-  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
+  box-shadow: 6px 6px 16px var(--day-neuromorphism-color-1),
+    -6px -6px 16px var(--day-neuromotphism-color-2);
 }
 .curr-day-info-tile {
   padding: 5px;
@@ -148,12 +165,12 @@
   box-sizing: border-box;
   text-align: start;
 }
-.tile-icon-day {
-  filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
-    brightness(102%) contrast(91%);
-}
+
 .tile-icon {
   width: 30px;
+
+  filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
+    brightness(102%) contrast(91%);
 
   align-self: center;
 }
@@ -179,7 +196,8 @@
   margin-top: 25px;
 
   box-sizing: border-box;
-  box-shadow: 6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff;
+  box-shadow: 6px 6px 16px var(--day-neuromorphism-color-1),
+    -6px -6px 16px var(--day-neuromotphism-color-2);
 }
 .weather-forecast-sections {
   padding: 0 5px;
@@ -191,25 +209,38 @@
 }
 .disp-hourly {
   font-weight: 700;
-  text-decoration: underline 2px #f3c950;
+  margin-right: 5px;
 }
 .disp-daily {
   font-weight: 500;
 }
 .forecast-tile {
   padding: 5px;
-  border: 2px solid #f3c950;
   border-radius: 20px;
 
   display: inline-grid;
   grid-template-columns: auto;
   grid-template-rows: repeat(3, auto);
 }
+.tile-border-day {
+  border: 2px solid var(--day-additional-color);
+}
+.tile-border-night {
+  border: 2px solid var(--night-additional-color);
+}
+.forecast-icon-color-day {
+  filter: invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg)
+    brightness(93%) contrast(94%);
+}
+.forecast-icon-color-night {
+  filter: invert(88%) sepia(5%) saturate(1117%) hue-rotate(202deg)
+    brightness(110%) contrast(86%);
+}
 .forecast-time-date {
   font-size: 12px;
 }
 .forecast {
-  width: 370px;
+  width: 400px;
   height: 130px;
   padding: 5px;
 
