@@ -42,8 +42,8 @@ async function displayWeatherData(coords) {
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&units=metric&appid=2036b1729952c5742fea723833b9919b`
   );
 
-  const currTemp = `${weatherData.current.temp.toFixed(0)}°C`;
-  const feelsLikeCurrTemp = `${weatherData.current.feels_like.toFixed(0)}°C`;
+  const currTemp = `${weatherData.current.temp.toFixed(1)}°C`;
+  const feelsLikeCurrTemp = `${weatherData.current.feels_like.toFixed(1)}°C`;
   const currWeatherIcon = weatherData.current.weather[0].icon;
   const currWeatherDescription = weatherData.current.weather[0].description;
   const timezoneOffset = weatherData.timezone_offset;
@@ -53,9 +53,9 @@ async function displayWeatherData(coords) {
   const sunsetTime = convertTimestampToTime(
     weatherData.current.sunset + timezoneOffset
   );
-  const minTemp = `${weatherData.daily[0].temp.min.toFixed(0)}°C`;
-  const maxTemp = `${weatherData.daily[0].temp.max.toFixed(0)}°C`;
-  const windSpeed = `${(weatherData.current.wind_speed * 3.6).toFixed(0)}km/h`;
+  const minTemp = `${weatherData.daily[0].temp.min.toFixed(1)}°C`;
+  const maxTemp = `${weatherData.daily[0].temp.max.toFixed(1)}°C`;
+  const windSpeed = `${(weatherData.current.wind_speed * 3.6).toFixed(1)}km/h`;
   const windDegrees = weatherData.current.wind_deg;
   let windDirect;
   const humidity = `${weatherData.current.humidity}%`;
@@ -127,7 +127,7 @@ async function displayWeatherData(coords) {
   // Display hourly forecast data
   weatherData.hourly.map((hourlyData) => {
     const forecastTime = convertTimestampToTime(hourlyData.dt + timezoneOffset);
-    const forecastTemp = hourlyData.temp.toFixed(0);
+    const forecastTemp = hourlyData.temp.toFixed(1);
     const forecastIcon = hourlyData.weather[0].icon;
 
     const html = `
@@ -147,8 +147,8 @@ async function displayWeatherData(coords) {
       dailyData.dt + timezoneOffset
     );
     const forecastIcon = dailyData.weather[0].icon;
-    const tempDay = dailyData.temp.day.toFixed(0);
-    const tempNight = dailyData.temp.night.toFixed(0);
+    const tempDay = dailyData.temp.day.toFixed(1);
+    const tempNight = dailyData.temp.night.toFixed(1);
 
     const html = `
     <div class="forecast-tile daily-tile">
