@@ -6,6 +6,7 @@ import {
   displayImg,
   displayData,
   displayCurrDateAndTime,
+  dailyHourlyForecastDisplay,
 } from "./modules/display.js";
 import { getDataFromAPI as getData } from "./modules/getDataFromAPI.js";
 
@@ -39,6 +40,7 @@ const displayDailyButton = document.querySelector(".disp-daily");
 const hourlyForecastCont = document.querySelector(".hourly-forecast");
 const dailyForecastCont = document.querySelector(".daily-forecast");
 
+// Display weather data
 async function displayWeatherData(coords) {
   const [lat, lon] = coords;
 
@@ -198,20 +200,19 @@ async function displayWeatherData(coords) {
   if (currWeatherIcon.at(-1) === "n") {
     // container
     widgetCont.style.color = "#e6e6ee";
-    widgetCont.style.textShadow = "3px -3px 3px #0a1522";
+    widgetCont.style.textShadow = "0px -1px 2px #d5d5d5";
     // img-container
     backgroundImgCont.style.borderRight = "14px double #d5d5d5";
-    backgroundImgCont.style.boxShadow =
-      "6px 6px 16px #0a1521, -6px -6px 16px #122941";
+    backgroundImgCont.style.boxShadow = "0 0 20px #08131d";
     // weather-icon
     weatherIcon.style.filter =
       "invert(88%) sepia(5%) saturate(1117%) hue-rotate(202deg) brightness(110%) contrast(86%)";
     // info-container
     infoCont.style.backgroundColor = "#0e1f31";
-    infoCont.style.boxShadow = "6px 6px 16px #0a1521, -6px -6px 16px #122941";
+    infoCont.style.boxShadow = "0 0 20px #08131d";
     // details-container
     detailsCont.style.boxShadow =
-      "6px 6px 16px #0a1521, -6px -6px 16px #122941";
+      "20px 20px 60px #08131d, -20px -20px 60px #142b45";
     // tile-icon
     tileIcons.forEach(
       (tileIcon) =>
@@ -220,23 +221,26 @@ async function displayWeatherData(coords) {
     );
     // weather-forecast
     forecastCont.style.boxShadow =
-      "6px 6px 16px #0a1521, -6px -6px 16px #122941";
+      "20px 20px 60px #08131d, -20px -20px 60px #142b45";
   }
 }
 displayWeatherData([35.652832, 139.839478]);
 
+// Listeners
 displayDailyButton.addEventListener("click", () => {
-  dailyForecastCont.classList.remove("hidden");
-  hourlyForecastCont.classList.add("hidden");
-
-  displayDailyButton.style.fontWeight = "700";
-  displayHourlyButton.style.fontWeight = "500";
+  dailyHourlyForecastDisplay(
+    dailyForecastCont,
+    displayDailyButton,
+    hourlyForecastCont,
+    displayHourlyButton
+  );
 });
 
 displayHourlyButton.addEventListener("click", () => {
-  hourlyForecastCont.classList.remove("hidden");
-  dailyForecastCont.classList.add("hidden");
-
-  displayHourlyButton.style.fontWeight = "700";
-  displayDailyButton.style.fontWeight = "500";
+  dailyHourlyForecastDisplay(
+    hourlyForecastCont,
+    displayHourlyButton,
+    dailyForecastCont,
+    displayDailyButton
+  );
 });
