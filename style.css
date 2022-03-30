@@ -36,28 +36,26 @@
   border-radius: 15px;
 }
 
-.center {
-  text-align: center;
-}
-
 /* _________________________________________ */
 /* Logo Container */
 /* _________________________________________ */
 .logo-container {
+  margin-top: 20px;
+
   display: inline-grid;
   grid-template-rows: repeat(2, auto);
   grid-template-columns: repeat(2, auto);
   gap: 0 10px;
+
   color: var(--night-background-color);
   letter-spacing: -0.5px;
   text-shadow: 2px -2px 5px var(--day-color-shadow);
   text-align: left;
-  margin-top: 20px;
 }
 .logo-icon {
   width: 60px;
-  align-self: center;
 
+  align-self: center;
   filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
     brightness(102%) contrast(91%);
 }
@@ -65,9 +63,54 @@
 /* _________________________________________ */
 /* Search Container */
 /* _________________________________________ */
-
 .search-container {
+  margin-top: 25px;
+}
+.search-container form {
+  display: inline-grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 5px;
+}
+.search-container input[type="text"] {
+  width: 200px;
+  height: 15px;
+  padding: 3px;
+  border: 2px solid var(--night-additional-color);
+  border-radius: 10px;
+
+  font-size: 12px;
+
   text-align: center;
+  align-self: center;
+}
+.search-container input[type="text"]:focus {
+  margin: -1.5px -1px;
+  border: 3px solid var(--night-additional-color);
+
+  outline: none;
+}
+.search-icon-background {
+  border-radius: 100%;
+
+  display: inline-block;
+
+  background-color: var(--night-additional-color);
+}
+.search-icon {
+  width: 15px;
+  margin: 7px;
+
+  vertical-align: middle;
+  filter: invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg)
+    brightness(93%) contrast(94%);
+}
+.search-icon-background:hover {
+  background-color: var(--night-background-color);
+  cursor: pointer;
+}
+.search-icon-background:hover .search-icon {
+  filter: invert(90%) sepia(0%) saturate(5%) hue-rotate(166deg) brightness(83%)
+    contrast(97%);
 }
 
 /* _________________________________________ */
@@ -349,6 +392,10 @@
 /* _________________________________________ */
 /* Other */
 /* _________________________________________ */
+
+.center {
+  text-align: center;
+}
 
 .hidden {
   display: none;
