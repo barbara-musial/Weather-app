@@ -17,8 +17,8 @@ export function convertTimestampToWeekDay(timestamp) {
 
 export function convertTimestampToTime(timestamp) {
   const date = new Date(timestamp * 1000);
-  const hours = date.getHours();
+  const hour = date.getHours();
   const minutes = date.getMinutes();
 
-  return `${hours}:${minutes <= 9 ? "0" + minutes : minutes}`;
+  return `${hour}:${minutes <= 9 ? "0" + minutes : minutes}`;
 }
