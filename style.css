@@ -10,8 +10,8 @@
   --scrollbar-color: #0e1f31;
   --day-neuromorphism-color-1: #cfcfd6;
   --day-neuromotphism-color-2: #fdfdff;
-  --night-neuromorphism-color-1: #0a1521;
-  --night-neuromorphism-color-2: #122941;
+  --night-neuromorphism-color-1: #08131d;
+  --night-neuromorphism-color-2: #142b45;
   --day-additional-color: #f3c950;
   --night-additional-color: #d5d5d5;
 }
@@ -28,6 +28,7 @@
 }
 *::-webkit-scrollbar-track {
   background: var(--day-background-color);
+  border-radius: 15px;
 }
 *::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-color);
