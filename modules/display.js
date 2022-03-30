@@ -19,3 +19,16 @@ export function displayCurrDateAndTime(
   dateContainer.textContent = convertTimestampToDate(timestamp);
   timeContainer.textContent = convertTimestampToTime(timestamp);
 }
+
+export function dailyHourlyForecastDisplay(
+  showCont,
+  boldButton,
+  hideCont,
+  lightButton
+) {
+  showCont.classList.remove("hidden");
+  hideCont.classList.add("hidden");
+
+  boldButton.style.fontWeight = "700";
+  lightButton.style.fontWeight = "500";
+}
