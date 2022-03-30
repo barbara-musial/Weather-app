@@ -89,7 +89,7 @@
 
   outline: none;
 }
-.search-icon-background {
+.search-button {
   border-radius: 100%;
 
   display: inline-block;
@@ -104,11 +104,11 @@
   filter: invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg)
     brightness(93%) contrast(94%);
 }
-.search-icon-background:hover {
+.search-button:hover {
   background-color: var(--night-background-color);
   cursor: pointer;
 }
-.search-icon-background:hover .search-icon {
+.search-button:hover .search-icon {
   filter: invert(90%) sepia(0%) saturate(5%) hue-rotate(166deg) brightness(83%)
     contrast(97%);
 }
