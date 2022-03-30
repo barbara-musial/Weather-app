@@ -9,8 +9,11 @@ import {
   dailyHourlyForecastDisplay,
 } from "./modules/display.js";
 import { getDataFromAPI as getData } from "./modules/getDataFromAPI.js";
+import { getCityNameCoords } from "./modules/getCityNameCoords.js";
 
 // Containers
+const searchButton = document.querySelector(".search-button");
+const searchTxtInput = document.querySelector(".search-input");
 const widgetCont = document.querySelector(".weather-container");
 const backgroundImgCont = document.querySelector(".img-container");
 const timeBackgroundImg = document.querySelector(".time-img");
@@ -224,9 +227,17 @@ async function displayWeatherData(coords) {
       "20px 20px 60px #08131d, -20px -20px 60px #142b45";
   }
 }
-displayWeatherData([35.652832, 139.839478]);
 
 // Listeners
+searchButton.addEventListener("click", async function () {
+  const cityName = searchTxtInput.value;
+  const coords = await getCityNameCoords(cityName);
+
+  await displayWeatherData(coords);
+  searchTxtInput.value = "";
+  widgetCont.classList.remove("hidden");
+});
+
 displayDailyButton.addEventListener("click", () => {
   dailyHourlyForecastDisplay(
     dailyForecastCont,
