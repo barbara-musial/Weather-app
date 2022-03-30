@@ -134,7 +134,11 @@ async function displayWeatherData(coords) {
   displayData(windDirect, windDirectCont);
   displayData(humidity, humidityCont);
   displayData(pressure, pressureCont);
-  displayCurrDateAndTime(weatherData.current.dt, currDayCont, currTimeCont);
+  displayCurrDateAndTime(
+    weatherData.current.dt + timezoneOffset - 7200,
+    currDayCont,
+    currTimeCont
+  );
 
   // Display hourly forecast data
   weatherData.hourly.map((hourlyData) => {
@@ -219,7 +223,7 @@ async function displayWeatherData(coords) {
       "6px 6px 16px #0a1521, -6px -6px 16px #122941";
   }
 }
-displayWeatherData([52.229676, 21.012229]);
+displayWeatherData([35.652832, 139.839478]);
 
 displayDailyButton.addEventListener("click", () => {
   dailyForecastCont.classList.remove("hidden");
