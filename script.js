@@ -11,7 +11,7 @@ import {
 import { getDataFromAPI as getData } from "./modules/getDataFromAPI.js";
 
 // Containers
-const widgetCont = document.querySelector(".container");
+const widgetCont = document.querySelector(".weather-container");
 const backgroundImgCont = document.querySelector(".img-container");
 const timeBackgroundImg = document.querySelector(".time-img");
 const currTempCont = document.querySelector(".curr-temp");
