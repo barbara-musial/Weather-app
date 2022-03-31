@@ -4,7 +4,7 @@ export async function getDataFromAPI(endpointURL) {
     .then((data) => data)
     .catch((error) => {
       console.error(`Something went wrong! ${error}`);
-      return "Something went wrong... Try again!";
+      alert(`Something went wrong... ${error}. Try again!`);
     });
 
   return data;
