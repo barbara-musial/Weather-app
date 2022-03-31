@@ -13,6 +13,7 @@ import { getCityNameCoords } from "./modules/getCityNameCoords.js";
 
 // Containers
 const searchButton = document.querySelector(".search-button");
+const errorMessage = document.querySelector(".error-message");
 const searchTxtInput = document.querySelector(".search-input");
 const widgetCont = document.querySelector(".weather-container");
 const backgroundImgCont = document.querySelector(".img-container");
@@ -47,18 +48,20 @@ const dailyForecastCont = document.querySelector(".daily-forecast");
 async function displayWeatherData(coords) {
   const [lat, lon] = coords;
 
-  const location = (
-    await getData(
-      `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=f52a5f9fe97247faaeb2a726f9ca5405`
+  const location = searchTxtInput.value
+    .split(" ")
+    .map(
+      (cityNamePart) =>
+        cityNamePart.at(0).toUpperCase() + cityNamePart.slice(1).toLowerCase()
     )
-  ).features[0].properties.city;
+    .join(" ");
 
   const weatherData = await getData(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&units=metric&appid=2036b1729952c5742fea723833b9919b`
   );
 
-  const currTemp = `${weatherData.current.temp.toFixed(0)}°C`;
-  const feelsLikeCurrTemp = `${weatherData.current.feels_like.toFixed(0)}°C`;
+  const currTemp = `${Math.floor(weatherData.current.temp)}°C`;
+  const feelsLikeCurrTemp = `${Math.floor(weatherData.current.feels_like)}°C`;
   const currWeatherIcon = weatherData.current.weather[0].icon;
   const currWeatherDescription = weatherData.current.weather[0].description;
   const timezoneOffset = weatherData.timezone_offset;
@@ -78,7 +81,7 @@ async function displayWeatherData(coords) {
 
   // Display background time img
   displayImg(
-    currWeatherIcon.at(-1) === "n" ? "night" : "day",
+    currWeatherIcon.at(-1) === "d" ? "day" : "night",
     timeBackgroundImg,
     "jpg"
   );
@@ -233,9 +236,16 @@ searchButton.addEventListener("click", async function () {
   const cityName = searchTxtInput.value;
   const coords = await getCityNameCoords(cityName);
 
-  await displayWeatherData(coords);
-  searchTxtInput.value = "";
-  widgetCont.classList.remove("hidden");
+  if (coords === "error") {
+    errorMessage.classList.remove("hidden");
+  } else {
+    hourlyForecastCont.innerHTML = "";
+    dailyForecastCont.innerHTML = "";
+    await displayWeatherData(coords);
+    searchTxtInput.value = "";
+    widgetCont.classList.remove("hidden");
+    errorMessage.classList.add("hidden");
+  }
 });
 
 displayDailyButton.addEventListener("click", () => {
