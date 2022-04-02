@@ -201,6 +201,35 @@ async function displayWeatherData(coords) {
     dailyForecastCont.innerHTML += html;
   });
 
+  // Set colors if day mode
+  if (currWeatherIcon.at(-1) === "d") {
+    // weather-container
+    widgetCont.style.color = "#0e1f31";
+    widgetCont.style.textShadow = "3px -3px 3px #d2d2da";
+    // img-container
+    backgroundImgCont.style.borderRight = "14px double #f3c950";
+    backgroundImgCont.style.boxShadow =
+      "6px 6px 16px #cfcfd6,-6px -6px 16px #fdfdff";
+    // weather-icon
+    weatherIcon.style.filter =
+      "invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg) brightness(93%) contrast(94%)";
+    // info-container
+    infoCont.style.backgroundColor = "#e6e6ee";
+    infoCont.style.boxShadow = "6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff";
+    // details-container
+    detailsCont.style.boxShadow =
+      "6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff";
+    // tile-icon
+    tileIcons.forEach(
+      (tileIcon) =>
+        (tileIcon.style.filter =
+          "invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg) brightness(102%) contrast(91%)")
+    );
+    // weather-forecast
+    forecastCont.style.boxShadow =
+      "6px 6px 16px #cfcfd6, -6px -6px 16px #fdfdff";
+  }
+
   // Set colors if night mode
   if (currWeatherIcon.at(-1) === "n") {
     // container
@@ -252,6 +281,7 @@ searchByCityButton.addEventListener("click", async function () {
 });
 
 searchByUserGeolocButton.addEventListener("click", function () {
+  widgetCont.style.opacity = "0";
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       async function (position) {
