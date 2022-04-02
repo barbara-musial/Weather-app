@@ -12,9 +12,10 @@ import { getDataFromAPI as getData } from "./modules/getDataFromAPI.js";
 import { getCityNameCoords } from "./modules/getCityNameCoords.js";
 
 // Containers
-const searchButton = document.querySelector(".search-button");
-const errorMessage = document.querySelector(".error-message");
 const searchTxtInput = document.querySelector(".search-input");
+const searchByUserGeolocButton = document.querySelector(".geolocation-icon");
+const searchByCityButton = document.querySelector(".search-button");
+const errorMessage = document.querySelector(".error-message");
 const widgetCont = document.querySelector(".weather-container");
 const backgroundImgCont = document.querySelector(".img-container");
 const timeBackgroundImg = document.querySelector(".time-img");
@@ -48,13 +49,11 @@ const dailyForecastCont = document.querySelector(".daily-forecast");
 async function displayWeatherData(coords) {
   const [lat, lon] = coords;
 
-  const location = searchTxtInput.value
-    .split(" ")
-    .map(
-      (cityNamePart) =>
-        cityNamePart.at(0).toUpperCase() + cityNamePart.slice(1).toLowerCase()
+  const location = (
+    await getData(
+      `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=f52a5f9fe97247faaeb2a726f9ca5405`
     )
-    .join(" ");
+  ).features[0].properties.city;
 
   const weatherData = await getData(
     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&units=metric&appid=2036b1729952c5742fea723833b9919b`
@@ -231,10 +230,14 @@ async function displayWeatherData(coords) {
   }
 }
 
+// Remove hidden class from weather container
+widgetCont.classList.remove("hidden");
+
 // Listeners
-searchButton.addEventListener("click", async function () {
+searchByCityButton.addEventListener("click", async function () {
   const cityName = searchTxtInput.value;
   const coords = await getCityNameCoords(cityName);
+  widgetCont.style.opacity = "0";
 
   if (coords === "error") {
     errorMessage.classList.remove("hidden");
@@ -243,8 +246,28 @@ searchButton.addEventListener("click", async function () {
     dailyForecastCont.innerHTML = "";
     await displayWeatherData(coords);
     searchTxtInput.value = "";
-    widgetCont.classList.remove("hidden");
+    widgetCont.style.opacity = "1";
     errorMessage.classList.add("hidden");
+  }
+});
+
+searchByUserGeolocButton.addEventListener("click", function () {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async function (position) {
+        const userCoords = [
+          position.coords.latitude,
+          position.coords.longitude,
+        ];
+
+        await displayWeatherData(userCoords);
+        widgetCont.style.opacity = "1";
+      },
+      (err) =>
+        alert(`The user have denied the request for Geolocation (${err})`)
+    );
+  } else {
+    alert("Your browser does not support geolocation");
   }
 });
 
