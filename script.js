@@ -290,8 +290,12 @@ searchByUserGeolocButton.addEventListener("click", function () {
           position.coords.longitude,
         ];
 
+        hourlyForecastCont.innerHTML = "";
+        dailyForecastCont.innerHTML = "";
         await displayWeatherData(userCoords);
+        searchTxtInput.value = "";
         widgetCont.style.opacity = "1";
+        errorMessage.classList.add("hidden");
       },
       (err) =>
         alert(`The user have denied the request for Geolocation (${err})`)
