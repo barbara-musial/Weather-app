@@ -55,7 +55,7 @@ async function displayWeatherData(coords) {
   const locationData = await getData(
     `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=f52a5f9fe97247faaeb2a726f9ca5405`
   );
-  const location = `${locationData.features[0].properties.city}, `;
+  const location = locationData.features[0].properties.city;
   const postcode = locationData.features[0].properties.postcode;
 
   const weatherData = await getData(
