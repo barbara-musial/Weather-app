@@ -1,5 +1,15 @@
 # Weather-app
 
+Simple Web Application displaying weather by city name or user's location.
+
+## Table of Contents
+
+- [Technologies]
+- [Features]
+- [Launch]
+- [Sources]
+- [License]
+
 Icons by Anu Rocks (https://freeicons.io/profile/730) and Raj Dev (https://freeicons.io/profile/714) on freeicons.io
 
 Background images by negin valadkhani on dribbble.com
