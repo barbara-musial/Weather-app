@@ -141,9 +141,7 @@
   flex-wrap: wrap;
   justify-content: center;
 
-  color: var(--night-background-color);
   letter-spacing: -0.5px;
-  text-shadow: 3px -3px 3px var(--day-color-shadow);
 
   opacity: 0;
   transition: 1s;
@@ -156,15 +154,12 @@
 .img-container {
   width: 250px;
   padding: 25px;
-  border-right: 14px double var(--day-additional-color);
   border-radius: 20px 0 0 20px;
 
   position: relative;
 
   box-sizing: border-box;
   overflow: hidden;
-  box-shadow: 6px 6px 16px var(--day-neuromorphism-color-1),
-    -6px -6px 16px var(--day-neuromotphism-color-2);
 
   text-align: right;
 }
@@ -200,9 +195,6 @@
   position: absolute;
   top: 45px;
   left: 25px;
-
-  filter: invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg)
-    brightness(93%) contrast(94%);
 }
 
 .weather-desc {
@@ -219,15 +211,18 @@
   padding: 25px;
   border-radius: 0 20px 20px 0;
 
-  background-color: var(--day-background-color);
-
   box-sizing: border-box;
-  box-shadow: 6px 6px 16px var(--day-neuromorphism-color-1),
-    -6px -6px 16px var(--day-neuromotphism-color-2);
 }
 .location {
+  display: inline;
+
   font-size: 33px;
   font-weight: 500;
+}
+.postcode {
+  display: inline;
+
+  font-size: 22px;
 }
 .curr-day {
   font-size: 12px;
@@ -254,8 +249,6 @@
   gap: 5px;
 
   box-sizing: border-box;
-  box-shadow: 6px 6px 16px var(--day-neuromorphism-color-1),
-    -6px -6px 16px var(--day-neuromotphism-color-2);
 }
 .curr-day-info-tile {
   padding: 5px;
@@ -270,9 +263,6 @@
 
 .tile-icon {
   width: 30px;
-
-  filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
-    brightness(102%) contrast(91%);
 
   align-self: center;
 }
@@ -298,8 +288,6 @@
   margin-top: 25px;
 
   box-sizing: border-box;
-  box-shadow: 6px 6px 16px var(--day-neuromorphism-color-1),
-    -6px -6px 16px var(--day-neuromotphism-color-2);
 }
 .weather-forecast-sections {
   padding: 0 5px;
@@ -313,12 +301,10 @@
   font-weight: 700;
   margin-right: 5px;
 }
-.disp-hourly:hover {
-  cursor: pointer;
-}
 .disp-daily {
   font-weight: 500;
 }
+.disp-hourly:hover,
 .disp-daily:hover {
   cursor: pointer;
 }
@@ -330,20 +316,7 @@
   grid-template-columns: auto;
   grid-template-rows: repeat(3, auto);
 }
-.tile-border-day {
-  border: 2px solid var(--day-additional-color);
-}
-.tile-border-night {
-  border: 2px solid var(--night-additional-color);
-}
-.forecast-icon-color-day {
-  filter: invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg)
-    brightness(93%) contrast(94%);
-}
-.forecast-icon-color-night {
-  filter: invert(88%) sepia(5%) saturate(1117%) hue-rotate(202deg)
-    brightness(110%) contrast(86%);
-}
+
 .forecast-time-date {
   font-size: 12px;
 }
@@ -409,8 +382,75 @@
 }
 
 /* _________________________________________ */
+/* Styles day */
+/* _________________________________________ */
+.font-color-day {
+  color: var(--night-background-color);
+}
+.text-shadow-day {
+  text-shadow: 3px -3px 3px var(--day-color-shadow);
+}
+.border-right-day {
+  border-right: 14px double var(--day-additional-color);
+}
+.box-shadow-day {
+  box-shadow: 6px 6px 16px var(--day-neuromorphism-color-1),
+    -6px -6px 16px var(--day-neuromotphism-color-2);
+}
+.filter-darkblue {
+  filter: invert(9%) sepia(21%) saturate(2140%) hue-rotate(172deg)
+    brightness(93%) contrast(94%);
+}
+.filter-yellow {
+  filter: invert(88%) sepia(79%) saturate(5069%) hue-rotate(318deg)
+    brightness(102%) contrast(91%);
+}
+.background-color-day {
+  background-color: var(--day-background-color);
+}
+.border-day {
+  border: 2px solid var(--day-additional-color);
+}
+/* _________________________________________ */
+/* Styles night */
+/* _________________________________________ */
+.font-color-night {
+  color: var(--day-background-color);
+}
+.text-shadow-night {
+  text-shadow: 0px -1px 2px var(--night-additional-color);
+}
+.border-right-night {
+  border-right: 14px double var(--night-additional-color);
+}
+.box-shadow-night {
+  box-shadow: 6px 6px 16px var(--night-neuromorphism-color-1),
+    -6px -6px 16px var(--night-neuromorphism-color-2);
+}
+.filter-white {
+  filter: invert(90%) sepia(0%) saturate(5%) hue-rotate(166deg) brightness(83%)
+    contrast(97%);
+}
+.filter-grey {
+  filter: invert(90%) sepia(0%) saturate(5%) hue-rotate(166deg) brightness(83%)
+    contrast(97%);
+}
+.background-color-night {
+  background-color: var(--night-background-color);
+}
+.border-night {
+  border: 2px solid var(--night-additional-color);
+}
+
+/* _________________________________________ */
 /* Other */
 /* _________________________________________ */
+.font-weight-500 {
+  font-weight: 500;
+}
+.font-weight-700 {
+  font-weight: 700;
+}
 
 .center {
   text-align: center;
