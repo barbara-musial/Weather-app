@@ -6,16 +6,12 @@ Simple Web Application displaying weather by city name or user's location.
 
 ![](preview.gif)
 
----
-
 ## Table of Contents
 
 - [Technologies](#technologies)
 - [Features](#features)
 - [Launch](#launch)
 - [Sources](#sources)
-
----
 
 ## Technologies
 
@@ -25,8 +21,6 @@ Project is created with:
 - HTMl 5
 - CSS 2.1
 
----
-
 ## Features
 
 The Weather-app is designed to:
@@ -34,8 +28,6 @@ The Weather-app is designed to:
 - search for weather by city name and user's geolocation
 - display current, hourly and daily weather data
 - change colors depending on day time at the specified location
-
----
 
 ## Launch
 
@@ -59,8 +51,6 @@ If it does not work, then I would recommend to do it through VSC and Live-Stream
 7. Project should now be opened in your browser.
 
 If you are using Internet Explorer it might not work, because the project is build using modules, which are not supported by this browser. I would highly suggest using [Google Chrome](https://www.google.pl/chrome/?brand=FKPE&gclid=CjwKCAjw9LSSBhBsEiwAKtf0n8HlQ0uNvyvBCIg2qgYBDoBYR6ACajO4wJ4J5MIGDrU6k5CQoSrw-BoCN5oQAvD_BwE&gclsrc=aw.ds) instead.
-
----
 
 ## Sources
 
