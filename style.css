@@ -214,6 +214,7 @@
   box-sizing: border-box;
 }
 .location {
+  margin-right: 10px;
   display: inline;
 
   font-size: 33px;
@@ -222,7 +223,8 @@
 .postcode {
   display: inline;
 
-  font-size: 22px;
+  font-size: 20px;
+  font-weight: 500;
 }
 .curr-day {
   font-size: 12px;
